@@ -1,0 +1,87 @@
+/* h1 is the front page header */
+#front_page_header {
+  display: flex;
+  height: 100px;
+  width: 100%;
+}
+
+#h1_logo {
+  width: 100px;
+  margin: 0 0 0 1em;
+}
+
+.h1_col1 {
+  height: 100%;
+  line-height: 100px;
+  width: 50%;
+  overflow: hidden;
+}
+
+.h1_col2 {
+  height: 100%;
+  line-height: 100px;
+  width: 50%;
+  text-align: right;
+  padding-right: 1em;
+}
+
+/* h_ is for the home page */
+#h_overlay_title {
+  text-align: center;
+  font-size: 2vw;
+  margin-top: 5%;
+  padding: 0 5% 0 5%;
+  font-weight: bold;
+}
+
+.h_underline {
+  text-decoration: underline;
+}
+
+#h_what_to_do {
+  text-align: center;
+  margin: 5% 0 0 0;
+  color: #f7901e;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+#h_what_to_do2 {
+  text-align: center;
+  margin: 3% 0 3% 0;
+  color: #f7901e;
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+#h_list {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  margin-top: .5vw;
+  font-size: 1.2vw;
+}
+
+.h_list_element {
+  display: inline-block;
+  border-right: 1px solid #f7901e;
+  padding: 0 3% 0 3%;
+  width: 10%;
+  height: 7vw;
+  cursor: pointer;
+}
+
+.h_list_element:hover {
+  font-weight: bold;
+}
+
+#h_overlay {
+  position: absolute;
+  width: 40%;
+  height: 17vw;
+  background-color: rgba(255,255,255,.9);
+  top: 50%;
+  left: 65%;
+  transform: translate(-35%, -50%);
+  border-radius: .25em;
+}
