@@ -13,26 +13,11 @@
       <script type="text/javascript" src="js/sprintf.js"></script>
 
       <div id="my-header"></div>
-      <script>ps.header1('my-header');</script>
 
-      <div style="position: relative; background-color: #E6E6E6;">
-        <img src="img/shutterstock_230717266.png" style="width: 100%;">
-
-        <div id="h_overlay">
-           <div id="h_overlay_title">
-             <span class="h_underline">Get your price</span> (for free), then let us know
-             when you're ready to start
-           </div>
-           <div id="h_what_to_do">
-             Select your job type below
-           </div>
-           <div id="h_what_to_do2">
-             <i class="fa fa-arrow-down"></i>
-           </div>
-         </div>
-      </div>
-
-       <div id="my-projects"></div>
-       <script>ps.projectList('my-projects');</script>
+      <iframe width="100%" height="700px" id='frame' src="" frameborder="0"></iframe>
+      <script>
+        ps.header1('my-header');
+        ps.project_price('frame','evse');
+      </script>
     </body>
   </html>
