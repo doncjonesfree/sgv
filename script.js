@@ -1,5 +1,8 @@
 // var request = new XMLHttpRequest();
 
+const api = 'http://localhost:3000/api/';
+const contractor_id = 'TcvgDDwhu96DiuxJC';  // SGV Electric's mongo id
+
 const request = new XMLHttpRequest();
 var ps = {};
 
@@ -24,18 +27,32 @@ ps.header1 = function(id) {
   html.push('<div class="h1_col2" style="font-size:' + sz + 'vw">' + ps.phone + '</div>')
   html.push('</div>');
 
-  getListOfProjectTypes();
   ps.setHtml(id,html.join('\n'));
 };
 
-const getListOfProjectTypes = function(){
+ps.projectList = function(id){
+  getListOfProjectTypes(function(list){
+    let html = [];
+    html.push('<div id="h_list">');
+    for ( let i=0; i < list.length; i++ ) {
+      const l = list[i];
+      html.push( sprintf('<div class="h_list_element" id="project_%s">%s</div>',l.value, l.label));
+    }
+    html.push('</div>');
+    console.log('jones31',list);
+    ps.setHtml(id,html.join('\n'));
+  });
+
+};
+
+const getListOfProjectTypes = function(callback){
   console.log('jones33a');
-  request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+  const url = api + contractor_id + '/projectTypes';
+  request.open('GET', url, true);
 
   request.onload = function () {
     // Begin accessing JSON data here
-    const data = JSON.parse(this.response);
-    console.log('jones33b',data);
+    callback(JSON.parse(this.response));
   };
 
   request.send();

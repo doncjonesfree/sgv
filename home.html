@@ -8,11 +8,12 @@
 
     <body style="margin: 0; font-family: Arial, sans-serif;">
       <script type="text/javascript" src="script.js"></script>
+      <script type="text/javascript" src="sprintf.js"></script>
 
       <div id="my-header"></div>
       <script>ps.header1('my-header');</script>
 
-      <div style="position: relative;">
+      <div style="position: relative; background-color: #E6E6E6;">
         <img src="img/shutterstock_230717266.png" style="width: 100%;">
 
         <div id="h_overlay">
@@ -27,7 +28,9 @@
              <i class="fa fa-arrow-down"></i>
            </div>
          </div>
-       </div>
+      </div>
 
+       <div id="my-projects"></div>
+       <script>ps.projectList('my-projects');</script>
     </body>
   </html>
