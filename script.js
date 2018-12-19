@@ -44,7 +44,7 @@ ps.header1 = function(id) {
   let html = [];
   html.push('<div id="front_page_header">');
 
-  html.push('<a href="home.html">');
+  html.push('<a href="index.html">');
   html.push('<img id="h1_logo" src="img/SGV_Logo.jpg" style="height: 100px">');
   html.push('</a>');
 
