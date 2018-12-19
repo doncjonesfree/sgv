@@ -79,7 +79,9 @@ ps.projectList = function(id){
 ps.showYelp = function(){
   if ( window.innerWidth < 1000 ) {
     $('#yelp').css('height',0);
+    $('#yelp2').css('visibility','visible');
   } else {
+    $('#yelp2').css('height',0);
     $('#yelp').css('visibility','visible');
   }
 };
