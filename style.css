@@ -90,6 +90,13 @@
   border-radius: .25em;
 }
 
+#h_license {
+  text-align: center;
+  background-color: #e6e7e8;
+  font-size: 1.6vw;
+  padding: 1em;
+}
+
 /* admin */
 #adm_main {
   display: flex;
