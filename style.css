@@ -89,3 +89,37 @@
   transform: translate(-35%, -50%);
   border-radius: .25em;
 }
+
+/* admin */
+#adm_main {
+  display: flex;
+  width: 100%;
+  min-height: 500px;
+  border-top: 2px solid #bbbcd0;
+}
+#adm_options {
+  width: 20%;
+  border-right: 2px solid #bbbcd0;
+  background-color: #e6e7e8;
+}
+#adm_body {
+  width: 80%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.adm_link {
+  display: block;
+  font-size: 1.5vw;
+  height: 2em;
+  line-height: 2em;
+  border-bottom: 1px solid #bbbcd0;
+  text-decoration: none;
+  color: #808284;
+  margin-bottom: 0em;
+  padding: .5em 0 .5em 1em;
+}
+
+.adm_link:hover {
+  font-weight: bold;
+}

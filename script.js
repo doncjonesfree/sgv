@@ -1,13 +1,16 @@
-// var request = new XMLHttpRequest();
 var ps = {};
 
-const runningLocal = true;
-
-const contractor_id = 'TcvgDDwhu96DiuxJC';  // SGV Electric's mongo id
+ps.contractor_id = 'TcvgDDwhu96DiuxJC';  // SGV Electric's mongo id
 ps.phone = '(626) 629-8525';
 
+const runningLocal = function(){
+  const url = window.location.href;
+  if ( url.indexOf('file:') === 0 ) return true;
+  return false;
+};
+
 let baseUrl = '';
-if ( runningLocal ) {
+if ( runningLocal() ) {
   baseUrl = 'http://localhost:3000/';
 } else {
   baseUrl = 'https://www.electriciannearme.us/';
@@ -16,9 +19,14 @@ const api = baseUrl + 'api/';
 
 const request = new XMLHttpRequest();
 
+ps.admin = function(option){
+  const url = sprintf('%sapi_%s/%s',baseUrl,option,ps.contractor_id);
+  console.log('jones14',url);
+  $('#frame').attr('src',url);
+};
+
 ps.project_price = function(id,projectType){
-  const url = baseUrl + 'api_price/' + projectType + '/' + contractor_id;
-  console.log('jones14',id,url);
+  const url = baseUrl + 'api_price/' + projectType + '/' + ps.contractor_id;
   $('#'+id).attr('src',url);
 };
 
@@ -69,7 +77,7 @@ ps.projectList = function(id){
 };
 
 const getListOfProjectTypes = function(callback){
-  const url = api + contractor_id + '/projectTypes';
+  const url = api + ps.contractor_id + '/projectTypes';
   request.open('GET', url, true);
 
   request.onload = function () {
