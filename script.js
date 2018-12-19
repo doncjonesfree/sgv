@@ -76,6 +76,14 @@ ps.projectList = function(id){
 
 };
 
+ps.showYelp = function(){
+  if ( window.innerWidth < 1000 ) {
+    $('#yelp').css('height',0);
+  } else {
+    $('#yelp').css('visibility','visible');
+  }
+};
+
 const getListOfProjectTypes = function(callback){
   const url = api + ps.contractor_id + '/projectTypes';
   request.open('GET', url, true);
