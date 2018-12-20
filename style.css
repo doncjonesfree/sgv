@@ -58,8 +58,8 @@
   display: flex;
   text-align: center;
   width: 100%;
-  padding: .5vw 0 1vw 0;
-  font-size: 1.2vw;
+  padding: .5vw 0 1em 0;
+  font-size: 1.4vw;
   background-color: #E6E6E6;
   margin: 0;
 }
@@ -67,8 +67,8 @@
 .h_list_element {
   display: inline-block;
   border-right: 1px solid #f7901e;
-  padding: 0 3% 0 3%;
-  width: 10%;
+  padding: 0 1% 0 1%;
+  width: 14.28%;
   height: 7vw;
   cursor: pointer;
   color: black;
