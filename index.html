@@ -26,22 +26,12 @@
       <div style="position: relative; background-color: #E6E6E6;">
         <img src="img/shutterstock_230717266.jpg" style="width: 100%;">
 
-        <div id="h_overlay">
-           <div id="h_overlay_title">
-             <span class="h_underline">Get your price</span> (for free), then let us know
-             when you're ready to start
-           </div>
-           <div id="h_what_to_do">
-             Select your job type below
-           </div>
-           <div id="h_what_to_do2">
-             <i class="fa fa-arrow-down"></i>
-           </div>
-         </div>
+        <div id="h_overlay"></div>
       </div>
 
        <div id="my-projects"></div>
 
+       <!--
        <div id="yelp" style="display:flex; visibility: hidden;">
          <div style="width:25%;">
            <span class="yelp-review" data-review-id="SYuU8snU3hXqYtxzrYsO9g" data-hostname="www.yelp.com">Read <a href="https://www.yelp.com/user_details?userid=HHY3aMabCEYBN2GVAS1tsA" rel="nofollow noopener">Kevin C.</a>'s <a href="https://www.yelp.com/biz/sgv-electric-glendora?hrid=SYuU8snU3hXqYtxzrYsO9g" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/bQkUar7S849XVKuF03EgPg" rel="nofollow noopener">SGV Electric</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a><script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script></span>
@@ -52,6 +42,7 @@
          <div style="width:25%;">
            <span class="yelp-review" data-review-id="cFkcckqYAq0n-J_Xi57tsg" data-hostname="www.yelp.com">Read <a href="https://www.yelp.com/user_details?userid=h-mwf7zdz9PlhF6ppterxQ" rel="nofollow noopener">Nettie B.</a>'s <a href="https://www.yelp.com/biz/sgv-electric-glendora?hrid=cFkcckqYAq0n-J_Xi57tsg" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/bQkUar7S849XVKuF03EgPg" rel="nofollow noopener">SGV Electric</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a><script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script></span>
          </div>
+
          <div style="width:25%;">
            <span class="yelp-review" data-review-id="c80yO1EL_8P8GK4cRcXdaQ" data-hostname="www.yelp.com">Read <a href="https://www.yelp.com/user_details?userid=SdPLT50yUDG1fSa8QEXlTg" rel="nofollow noopener">Marco V.</a>'s <a href="https://www.yelp.com/biz/sgv-electric-glendora?hrid=c80yO1EL_8P8GK4cRcXdaQ" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/bQkUar7S849XVKuF03EgPg" rel="nofollow noopener">SGV Electric</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a><script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script></span>
          </div>
@@ -60,6 +51,7 @@
        <div id="yelp2" style="width=100%; visibility: hidden;">
            <span class="yelp-review" data-review-id="SYuU8snU3hXqYtxzrYsO9g" data-hostname="www.yelp.com">Read <a href="https://www.yelp.com/user_details?userid=HHY3aMabCEYBN2GVAS1tsA" rel="nofollow noopener">Kevin C.</a>'s <a href="https://www.yelp.com/biz/sgv-electric-glendora?hrid=SYuU8snU3hXqYtxzrYsO9g" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/bQkUar7S849XVKuF03EgPg" rel="nofollow noopener">SGV Electric</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a><script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script></span>
        </div>
+     -->
 
        <div id="h_license">
          Fully licensed, bonded and insured.
@@ -68,7 +60,8 @@
 
        <script>
          ps.projectList('my-projects');
-         ps.showYelp();
+         ps.overlayInfo('h_overlay');
+         //ps.showYelp();
        </script>
 
     </body>
