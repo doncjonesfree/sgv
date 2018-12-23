@@ -18,18 +18,11 @@ const runningLocal = function(){
 $(document).ready(function(){
 
   $('body').on('keydown',function(e){
-    console.log('jones21 %s',e.which);
     if ( e.which === 13 ) {
       // return key pressed
       if ( $('#zip').length) ps.setupZip();
-      console.log('jones19 return key');
     }
   });
-
-  // $('#submit_zip').click(function(e){
-  //   console.log('jones24 submit');
-  //   ps.setupZip();
-  // });
 
 });
 
@@ -51,7 +44,6 @@ const request = new XMLHttpRequest();
 
 ps.admin = function(option){
   const url = sprintf('%s/api_%s/%s',baseUrl,option,ps.contractor_id);
-  console.log('jones14',url);
   $('#frame').attr('src',url);
 };
 
@@ -71,7 +63,6 @@ ps.setupZip = function(){
     } else {
       const city = sprintf('%s, %s',obj.installLocation.city,obj.installLocation.state);
       const distance = obj.distance;
-      console.log('jones63 zip=%s %s %s',zip,city,distance);
       ps.setCookie('zip',zip);
       ps.setCookie('city',city);
       ps.setCookie('distance',distance);
@@ -87,7 +78,6 @@ ps.setupZip = function(){
 
 ps.project_price = function(id,projectType){
   const url = sprintf('%s/api_price/%s/%s/%s',baseUrl,projectType,ps.contractor_id,ps.getCookie('zip'));
-  console.log('jones92 zip=%s url=%s',ps.getCookie('zip'),url);
   $('#'+id).attr('src',url);
 };
 
@@ -175,6 +165,16 @@ const focus = function(id,count){
   }
 };
 
+const numbers = '1234567890';
+const allNumbers = function(n){
+  if ( n ) {
+    for ( let i=0; i < n.length; i++ ) {
+      const c = n.substr(i,1);
+      if ( numbers.indexOf(c) < 0 ) return false;
+    }
+  }
+  return true;
+};
 
 ps.overlayInfo = function(id){
   if ( ! id ) id = ps.getCookie('id');
@@ -182,7 +182,6 @@ ps.overlayInfo = function(id){
 
   if ( ! ps.question) ps.question = 1;
 
-  console.log('jones172 q=%s id=%s',ps.question,id);
   switch (ps.question) {
     case 1:
     // ask for zip code
@@ -196,7 +195,7 @@ ps.overlayInfo = function(id){
     html.push('<div class="h_overlay_input">');
     let zip = ps.getCookie('zip');
     if ( zip === null ) zip = '';
-    console.log('jones174 zip=%s',zip);
+    if ( ! allNumbers(zip)) zip = '';
     html.push(sprintf('<input class="h_text" id="zip" type="text" value="%s">',zip));
     html.push('</div>');
 
@@ -242,15 +241,12 @@ ps.setCookie = function(name,value,days) {
 ps.getCookie = function(name) {
     var nameEQ = name + "=";
     var ca = decodeURIComponent(document.cookie);
-    console.log('jones210',ca);
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
-    console.log('jones216a',c);
-    console.log('jones216b',ca);
     return c;
 }
 function eraseCookie(name) {
