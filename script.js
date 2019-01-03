@@ -178,6 +178,7 @@ const allNumbers = function(n){
 
 ps.overlayInfo = function(id){
   if ( ! id ) id = ps.getCookie('id');
+  if ( ! id ) console.log('Error: cookies are NOT WORKING - do not use Chrome!');
   let html = [];
 
   if ( ! ps.question) ps.question = 1;
@@ -227,6 +228,7 @@ ps.overlayInfo = function(id){
     break;
   }
 
+  console.log('jones230 id=%s',id,html);
   $('#'+id).html( html.join(' '));
 };
 
