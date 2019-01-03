@@ -29,7 +29,7 @@
 #h_overlay_title {
   text-align: center;
   font-size: 2vw;
-  margin: .5em 0 0 0;
+  margin: 1em 0 0 0;
   padding: 0 5% 0 5%;
   font-weight: bold;
 }
@@ -103,7 +103,7 @@
 
 #h_what_to_do {
   text-align: center;
-  margin: .5em 0 0 0;
+  margin: 1em 0 0 0;
   color: #f7901e;
   font-size: 2vw;
   font-weight: bold;

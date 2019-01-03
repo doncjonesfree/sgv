@@ -15,23 +15,6 @@ const runningLocal = function(){
   return false;
 };
 
-$(document).ready(function(){
-
-  $('body').on('keydown',function(e){
-    if ( e.which === 13 ) {
-      // return key pressed
-      if ( $('#zip').length) ps.setupZip();
-    }
-  });
-
-});
-
-ps.overlayBack = function(){
-  ps.question -= 1;
-  ps.overlayInfo();
-  ps.projectList('my-projects');
-};
-
 let baseUrl = '';
 if ( runningLocal() ) {
   baseUrl = 'http://localhost:3000';
@@ -47,37 +30,8 @@ ps.admin = function(option){
   $('#frame').attr('src',url);
 };
 
-ps.setupZip = function(){
-  // call the api, we have a zip code
-  $('#h_error').html('');
-  const zip = $('#zip').val();
-  const url = sprintf('%s/%s/%s/getZip',api,ps.contractor_id,zip);
-  request.open('GET', url, true);
-
-  request.onload = function () {
-    // Begin accessing JSON data here
-    const obj = JSON.parse(this.response);
-    if ( ! obj ) {
-    } else if ( obj.error ) {
-      $('#h_error').html(obj.error);
-    } else {
-      const city = sprintf('%s, %s',obj.installLocation.city,obj.installLocation.state);
-      const distance = obj.distance;
-      ps.setCookie('zip',zip);
-      ps.setCookie('city',city);
-      ps.setCookie('distance',distance);
-
-      ps.question += 1;
-      ps.overlayInfo();
-      ps.projectList('my-projects');
-    }
-  };
-
-  request.send();
-};
-
 ps.project_price = function(id,projectType){
-  const url = sprintf('%s/api_price/%s/%s/%s',baseUrl,projectType,ps.contractor_id,ps.getCookie('zip'));
+  const url = sprintf('%s/api_price/%s/%s',baseUrl,projectType,ps.contractor_id);
   $('#'+id).attr('src',url);
 };
 
@@ -115,21 +69,17 @@ ps.header1 = function(id) {
 };
 
 ps.projectList = function(id){
-  if (ps.question && ps.question > 1 ) {
-    getListOfProjectTypes(function(list){
-      let html = [];
-      html.push('<div id="h_list">');
-      for ( let i=0; i < list.length; i++ ) {
-        const l = list[i];
-        //html.push( sprintf('<div class="h_list_element" id="project_%s">%s</div>',l.value, l.label));
-        html.push( sprintf('<a class="h_list_element" href="%s.html">%s</a>',l.value, l.label));
-      }
-      html.push('</div>');
-      ps.setHtml(id,html.join('\n'));
-    });
-  } else {
-    ps.setHtml(id,'');
-  }
+  getListOfProjectTypes(function(list){
+    let html = [];
+    html.push('<div id="h_list">');
+    for ( let i=0; i < list.length; i++ ) {
+      const l = list[i];
+      //html.push( sprintf('<div class="h_list_element" id="project_%s">%s</div>',l.value, l.label));
+      html.push( sprintf('<a class="h_list_element" href="%s.html">%s</a>',l.value, l.label));
+    }
+    html.push('</div>');
+    ps.setHtml(id,html.join('\n'));
+  });
 };
 
 ps.showYelp = function(){
@@ -177,47 +127,19 @@ const allNumbers = function(n){
 };
 
 ps.overlayInfo = function(id){
-  if ( ! id ) id = ps.getCookie('id');
-  if ( ! id ) console.log('Error: cookies are NOT WORKING - do not use Chrome!');
+  if ( ! id ) id = 'h_overlay';
   let html = [];
 
-  if ( ! ps.question) ps.question = 1;
+  // we used to ask for zip code first, that has been turned off
+  ps.question = 2;
 
   switch (ps.question) {
-    case 1:
-    // ask for zip code
-    ps.setCookie('id',id);
-    html.push('<div class="h_overlay_label">');
-    html.push('We specialize in Glendora and surrounding areas');
-    html.push('</div>');
-    html.push('<div class="h_overlay_prompt">');
-    html.push('Please enter your zip code');
-    html.push('</div>');
-    html.push('<div class="h_overlay_input">');
-    let zip = ps.getCookie('zip');
-    if ( zip === null ) zip = '';
-    if ( ! allNumbers(zip)) zip = '';
-    html.push(sprintf('<input class="h_text" id="zip" type="text" value="%s">',zip));
-    html.push('</div>');
-
-    html.push('<div id="submit_zip" onclick = "ps.setupZip();">Submit</div>');
-    html.push('<div id="h_error"></div>');
-
-    focus('#zip');
-    break;
-
     case 2:
     // select job
     html.push('<div id="h_overlay_title">');
     html.push('<span class="h_underline">Get your price</span>');
     html.push(' (for free), then let us know');
     html.push("when you're ready to start");
-    html.push('</div>');
-    html.push('<div class="h_location">');
-    html.push( sprintf('%s %s',ps.getCookie('city'),ps.getCookie('zip')));
-    const clickCommand = "ps.overlayBack()";
-    html.push(sprintf('<div id="h_overlay_back" onclick = "%s">back</div>',clickCommand));
-
     html.push('</div>');
     html.push('<div id="h_what_to_do">');
     html.push('Select your job type below');
