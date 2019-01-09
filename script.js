@@ -58,6 +58,7 @@ ps.header1 = function(id) {
   html.push('<div class="h1_col1" style="font-size:' + sz + 'vw">Electrician Glendora');
   html.push('</div>');
   html.push('<div class="h1_col2" style="font-size:' + sz + 'vw">');
+  html.push('<a href="index.html" style="text-decoration: none; color: black; font-size: .5em; margin-right: 20px;">home</a>');
   html.push(ps.phone1);
   html.push('</div>');
   html.push('<img id="glendora_logo" src="img/glendora-logo.png" style="height: 80px; margin: 10px 1em 10px 0;">');
@@ -150,7 +151,6 @@ ps.overlayInfo = function(id){
     break;
   }
 
-  console.log('jones230 id=%s',id,html);
   $('#'+id).html( html.join(' '));
 };
 
