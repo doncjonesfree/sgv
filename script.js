@@ -73,10 +73,13 @@ ps.projectList = function(id){
   getListOfProjectTypes(function(list){
     let html = [];
     html.push('<div id="h_list">');
+    const skip = ['outlets','lights','circuits'];  // skip these
     for ( let i=0; i < list.length; i++ ) {
       const l = list[i];
-      //html.push( sprintf('<div class="h_list_element" id="project_%s">%s</div>',l.value, l.label));
-      html.push( sprintf('<a class="h_list_element" href="%s.html">%s</a>',l.value, l.label));
+      if ( skip.indexOf(l.value) < 0 ) {
+        //html.push( sprintf('<div class="h_list_element" id="project_%s">%s</div>',l.value, l.label));
+        html.push( sprintf('<a class="h_list_element" href="%s.html">%s</a>',l.value, l.label));
+      }
     }
     html.push('</div>');
     ps.setHtml(id,html.join('\n'));
