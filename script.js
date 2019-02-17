@@ -73,7 +73,7 @@ ps.projectList = function(id){
   getListOfProjectTypes(function(list){
     let html = [];
     html.push('<div id="h_list">');
-    const skip = ['outlets','lights','circuits'];  // skip these
+    const skip = ['outlets','lights','circuits','remodel'];  // skip these
     for ( let i=0; i < list.length; i++ ) {
       const l = list[i];
       if ( skip.indexOf(l.value) < 0 ) {
